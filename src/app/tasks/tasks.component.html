@@ -1,0 +1,19 @@
+<div class="task-container">
+    <h2>Criar uma Nova Tarefa</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Nome:</label>
+        <input id="name" formControlName="name">
+      </div>
+      <div>
+        <label for="description">Descrição:</label>
+        <textarea id="description" formControlName="description"></textarea>
+      </div>
+      <div>
+        <label for="dueDate">Data de Vencimento:</label>
+        <input id="dueDate" type="date" formControlName="dueDate">
+      </div>
+      <button type="submit" [disabled]="!taskForm.valid">Adicionar Tarefa</button>
+    </form>
+  </div>
+  
