@@ -40,7 +40,7 @@ export class EditTaskDialogComponent {
       _id: [data.task._id],
       name: [data.task.name, Validators.required],
       description: [data.task.description],
-      dueDate: [data.task.dueDate, Validators.required]
+      dueDate: [data.task.dueDate]
     });
   }
 

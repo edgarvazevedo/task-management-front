@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
+import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -70,6 +71,14 @@ export class MyTasksComponent implements OnInit {
   }
 
   editTask(task: Task): void {
+    if (task.status !== 'Pending') {
+      this.dialog.open(AlertDialogComponent, {
+        width: '300px',
+        data: { message: 'Esta tarefa não pode ser editada, pois já se encontra iniciada' }
+      });
+      return;
+    }
+
     const dialogRef = this.dialog.open(EditTaskDialogComponent, {
       width: '400px',
       data: { task }
@@ -92,17 +101,33 @@ export class MyTasksComponent implements OnInit {
 
   markAsCompleted(id: string): void {
     this.taskService.markTaskAsCompleted(id).subscribe(
-      () => {
+      (updatedTask) => {
         const task = this.dataSource.data.find(task => task._id === id);
         if (task) {
-          task.completed = true;
-          task.status = 'Completed';
+          task.completed = updatedTask.completed;
+          task.status = updatedTask.status;
           this.dataSource.data = [...this.dataSource.data];
         }
         console.log('Task marked as completed successfully');
       },
       (error) => {
         console.error('Error marking task as completed:', error);
+      }
+    );
+  }
+
+  startTask(id: string): void {
+    this.taskService.updateTaskStatus(id, 'In Progress').subscribe(
+      (updatedTask) => {
+        const task = this.dataSource.data.find(task => task._id === id);
+        if (task) {
+          task.status = updatedTask.status;
+          this.dataSource.data = [...this.dataSource.data];
+        }
+        console.log('Task In Progress successfully');
+      },
+      (error) => {
+        console.error('Error starting task:', error);
       }
     );
   }
