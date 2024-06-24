@@ -28,19 +28,19 @@ frontend/
 ├── node_modules/ # Dependencias del proyecto
 ├── public/ # Archivos públicos de la aplicación
 ├── src/
-│ ├── app/
-│ │ ├── add-task-modal/ # Componente modal para añadir tareas
-│ │ ├── alert-dialog/ # Componente de diálogo de alerta
-│ │ ├── confirm-dialog/ # Componente de diálogo de confirmación
-│ │ ├── edit-task-dialog/ # Componente modal para editar tareas
-│ │ ├── my-tasks/ # Componente para mostrar lista de tareas
-│ │ ├── navbar/ # Componente de barra de navegación
-│ │ ├── services/ # Servicios Angular para interacción con el backend
-│ │ └── tasks/ # Componente para mostrar detalles de tareas
-│ ├── index.html # Página HTML principal
-│ ├── main.server/ # Configuraciones de servidor Angular Universal
-│ ├── style.css # Estilos globales de la aplicación
-│ └── ... # Otros archivos del Angular
+│   ├── app/
+│   │   ├── add-task-modal/ # Componente modal para añadir tareas
+│   │   ├── alert-dialog/ # Componente de diálogo de alerta
+│   │   ├── confirm-dialog/ # Componente de diálogo de confirmación
+│   │   ├── edit-task-dialog/ # Componente modal para editar tareas
+│   │   ├── my-tasks/ # Componente para mostrar lista de tareas
+│   │   ├── navbar/ # Componente de barra de navegación
+│   │   ├── services/ # Servicios Angular para interacción con el backend
+│   │   └── tasks/ # Componente para mostrar detalles de tareas
+│   ├── index.html # Página HTML principal
+│   ├── main.server/ # Configuraciones de servidor Angular Universal
+│   ├── style.css # Estilos globales de la aplicación
+│   └── ... # Otros archivos del Angular
 ├── .editorconfig # Configuración del editor
 ├── angular.json # Configuraciones del Angular CLI
 ├── package-lock.json # Bloqueo de versiones de dependencias npm
@@ -48,7 +48,9 @@ frontend/
 ├── README.md # Documentación del proyecto (este archivo)
 ├── server.ts # Archivo de inicialización del servidor (Angular Universal)
 ├── tsconfig.app.json # Configuraciones TypeScript para compilación de la aplicación
-├── tsconfig.json # Configuraciones TypeScript del proyecto
+└── tsconfig.json # Configuraciones TypeScript del proyecto
+
+
 
 
 - **`src/`**: Directorio principal del código fuente del frontend Angular.
