@@ -11,6 +11,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
+import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component';
+
 
 interface Task {
   _id?: string;
@@ -32,8 +35,8 @@ interface Task {
     MatDialogModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
-  ],
+    MatPaginatorModule,
+    RouterModule],
   templateUrl: './my-tasks.component.html',
   styleUrls: ['./my-tasks.component.css']
 })
@@ -41,7 +44,7 @@ export class MyTasksComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'dueDate', 'status', 'actions'];
   dataSource = new MatTableDataSource<Task>();
 
-  constructor(private taskService: TaskService, public dialog: MatDialog) {}
+  constructor(private taskService: TaskService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadTasks();
@@ -56,6 +59,19 @@ export class MyTasksComponent implements OnInit {
         console.error('Error loading tasks:', error);
       }
     );
+  }
+
+  openAddTaskModal(): void {
+    const dialogRef = this.dialog.open(AddTaskModalComponent, {
+      width: '500px'
+    });
+
+    dialogRef.afterClosed().subscribe((newTask: Task) => {
+      if (newTask) {
+        this.dataSource.data.push(newTask);
+        this.dataSource.data = [...this.dataSource.data];
+      }
+    });
   }
 
   deleteTask(id: string): void {

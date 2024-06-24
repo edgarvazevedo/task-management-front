@@ -1,8 +1,13 @@
-/* my-tasks.component.css */
 .container {
   margin-top: 20px;
 }
 
 .mat-elevation-z8 {
   margin-top: 20px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }

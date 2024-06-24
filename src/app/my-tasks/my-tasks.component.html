@@ -1,5 +1,10 @@
 <div class="container">
   <h2>My Tasks</h2>
+  <div class="toolbar">
+    <button mat-button color="primary" (click)="openAddTaskModal()">
+      + New Task
+    </button>
+  </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Title</th>
@@ -28,7 +33,12 @@
           <mat-icon>delete</mat-icon>
           Delete
         </button>
-        <button mat-button color="primary" (click)="editTask(task)">
+        <button
+          mat-button
+          color="primary"
+          (click)="editTask(task)"
+          *ngIf="task.status === 'Pending'"
+        >
           Edit
         </button>
         <button
