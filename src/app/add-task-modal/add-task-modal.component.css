@@ -1,0 +1,14 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .mat-dialog-content {
+    overflow: hidden;
+  }
+  
+  .mat-dialog-actions {
+    justify-content: flex-end;
+  }
+  

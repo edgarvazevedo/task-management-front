@@ -11,6 +11,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
+//hacer los imports de los componentes
 @Component({
   selector: 'app-add-task-modal',
   templateUrl: './add-task-modal.component.html',
@@ -24,7 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule  // Importando MatDialogModule
+    MatDialogModule 
   ]
 })
 export class AddTaskModalComponent implements OnInit {
@@ -57,7 +59,7 @@ export class AddTaskModalComponent implements OnInit {
       this.taskService.addTask(newTask).subscribe(
         (response) => {
           console.log('Task added successfully', response);
-          this.dialogRef.close(response); // Fecha o modal e passa a nova task de volta para o componente pai, se necessário
+          this.dialogRef.close(response);
         },
         (error) => {
           console.error('There was an error adding the task!', error);
