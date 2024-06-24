@@ -16,13 +16,14 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Data</mat-label>
+      <mat-label>Date</mat-label>
       <input
         matInput
-        id="dueDate"
         [matDatepicker]="picker"
+        id="dueDate"
         formControlName="dueDate"
       />
+      <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
         [for]="picker"

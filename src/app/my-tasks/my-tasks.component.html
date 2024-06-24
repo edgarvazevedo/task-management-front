@@ -1,7 +1,6 @@
 <div class="container">
-  <h2>My Tasks</h2>
   <div class="toolbar">
-    <button mat-button color="primary" (click)="openAddTaskModal()">
+    <button mat-flat-button color="primary" (click)="openAddTaskModal()">
       + New Task
     </button>
   </div>
@@ -43,7 +42,6 @@
         </button>
         <button
           mat-button
-          color="accent"
           (click)="markAsCompleted(task._id!)"
           *ngIf="!task.completed"
         >

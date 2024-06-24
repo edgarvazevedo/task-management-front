@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -24,6 +24,7 @@ interface Task {
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule, MatFormFieldModule, MatDatepickerModule,
     MatNativeDateModule, MatButtonModule, MatInputModule],
+    changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })

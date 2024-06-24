@@ -13,6 +13,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { AddTaskModalComponent } from '../add-task-modal/add-task-modal.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 
 interface Task {
@@ -75,16 +76,25 @@ export class MyTasksComponent implements OnInit {
   }
 
   deleteTask(id: string): void {
-    this.taskService.deleteTask(id).subscribe(
-      () => {
-        this.dataSource.data = this.dataSource.data.filter(task => task._id !== id);
-        console.log('Task deleted successfully');
-      },
-      (error) => {
-        console.error('Error deleting task:', error);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.taskService.deleteTask(id).subscribe(
+          () => {
+            this.dataSource.data = this.dataSource.data.filter((task) => task._id !== id);
+            console.log('Task deleted successfully');
+          },
+          (error) => {
+            console.error('Error deleting task:', error);
+          }
+        );
       }
-    );
+    });
   }
+
 
   editTask(task: Task): void {
     if (task.status !== 'Pending') {

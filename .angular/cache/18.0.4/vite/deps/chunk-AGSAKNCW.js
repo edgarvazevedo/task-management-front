@@ -1,7 +1,7 @@
 import {
   DOCUMENT,
   isPlatformBrowser
-} from "./chunk-TWDL77LX.js";
+} from "./chunk-6FRVOFEY.js";
 import {
   ANIMATION_MODULE_TYPE,
   APP_ID,
@@ -81,7 +81,7 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-JQS63U64.js";
+} from "./chunk-UMVNPX7U.js";
 
 // node_modules/@angular/cdk/fesm2022/platform.mjs
 var hasV8BreakIterator;
@@ -1357,6 +1357,17 @@ var ListKeyManager = class {
       if (newIndex > -1 && newIndex !== this._activeItemIndex) {
         this._activeItemIndex = newIndex;
       }
+    }
+  }
+};
+var ActiveDescendantKeyManager = class extends ListKeyManager {
+  setActiveItem(index) {
+    if (this.activeItem) {
+      this.activeItem.setInactiveStyles();
+    }
+    super.setActiveItem(index);
+    if (this.activeItem) {
+      this.activeItem.setActiveStyles();
     }
   }
 };
@@ -5167,12 +5178,6 @@ var _MatInternalFormField = __MatInternalFormField;
 })();
 
 export {
-  coerceBooleanProperty,
-  coerceNumberProperty,
-  coerceArray,
-  coerceCssPixelValue,
-  coerceElement,
-  coerceStringArray,
   Platform,
   getSupportedInputTypes,
   normalizePassiveListenerOptions,
@@ -5182,8 +5187,6 @@ export {
   _getFocusedElementPierceShadowDom,
   _getEventTarget,
   _isTestEnvironment,
-  Directionality,
-  BidiModule,
   BACKSPACE,
   ENTER,
   ESCAPE,
@@ -5198,15 +5201,29 @@ export {
   DOWN_ARROW,
   A,
   hasModifierKey,
+  coerceBooleanProperty,
+  coerceNumberProperty,
+  _isNumberValue,
+  coerceArray,
+  coerceCssPixelValue,
+  coerceElement,
+  coerceStringArray,
   CdkObserveContent,
   ObserversModule,
+  addAriaReferencedId,
+  removeAriaReferencedId,
+  AriaDescriber,
+  ActiveDescendantKeyManager,
   FocusKeyManager,
   InteractivityChecker,
   FocusTrapFactory,
   CdkTrapFocus,
+  LiveAnnouncer,
   FocusMonitor,
   CdkMonitorFocus,
   A11yModule,
+  Directionality,
+  BidiModule,
   VERSION2 as VERSION,
   AnimationCurves,
   AnimationDurations,
@@ -5253,4 +5270,4 @@ export {
   MatRippleLoader,
   _MatInternalFormField
 };
-//# sourceMappingURL=chunk-DPVJXGDY.js.map
+//# sourceMappingURL=chunk-AGSAKNCW.js.map
